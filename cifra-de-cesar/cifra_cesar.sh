@@ -1,13 +1,15 @@
 #!/bin/bash
-# Script para realizar operação simples de criptografia usando a "cifra de cesar"
+# Script para realizar operação simples de criptografia usando a "cifra de cesar" - Especialização em Segurança Unibratec
 # Autor: Diego Castelo Branco
 # Data: 05/05/2018
 
-LETRAS=(a b c d e f g h i j k l m n o p q r s t u v x w y z " ")
+#LETRAS=(a b c d e f g h i j k l m n o p q r s t u v w x y z " ")
+LETRAS=(a b c d e f g h i j k l m n o p q r s t u v w x y z)
 
 function fn_get_cifra_cesar()
 {
-	EXPRESSAO="$1"
+	IN="$1"
+	EXPRESSAO=$(echo "$IN" | tr "A-Z" "a-z")
 	DELTA="$2"
 
 	LEN_EXPRESSAO="${#EXPRESSAO}"
