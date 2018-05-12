@@ -93,7 +93,7 @@ if [ $# -lt 3 ];then
 	echo "Use: $0 <expressao> <chave> <-c|--cript> |<-d|--decript>"
 	echo " Notas:"
 	echo "   1) Utilize aspas para delimitar textos com espaços"
-	echo " Exemplo1: $0 \"cifra de vigeneve\" \"chavemestra\""
+	echo " Exemplo1: $0 \"cifra de adfgvx\" \"chavemestra\""
 
 fi
 
