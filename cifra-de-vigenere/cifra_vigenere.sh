@@ -155,6 +155,7 @@ if [ $# -lt 3 ];then
 	echo " Notas:"
 	echo "   1) Utilize aspas para delimitar textos com espaços"
 	echo " Exemplo1: $0 \"cifra de vigeneve\" \"chavemestra\""
+	exit
 
 fi
 

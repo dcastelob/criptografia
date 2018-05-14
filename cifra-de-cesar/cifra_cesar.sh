@@ -71,8 +71,9 @@ if [ $# -lt 2 ];then
 	echo "   1) Utilize aspas para delimitar textos com espaços"
 	echo "   2) Para cifrar Use delta positivo (Ex.: 3)"
 	echo "   3) Para descifrar Use delta negativo (Ex.: -3)"
-	echo " Exemplo1: $0 \"cifra de cesar\" 5"
+	echo " Exemplo1: $0 \"cifradecesar\" 5"
 	echo " Exemplo1: $0 \"hnkxfeijehjwfx\" -5"
+	exit
 fi
 
 fn_get_cifra_cesar "$1" "$2"
