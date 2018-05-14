@@ -31,7 +31,7 @@ function fn_get_cifra_adfgvx()
 	SAIDA=""
 	NEW_CHAVE=""
 	
-	# criando a repetição da chave para o mesmo tamanho da expressão SE a chave for menor que a quantidade de letras da expressao
+	# Tratamento para utilização de expressoes que não preenchem todos os campos da chave.
 	if [ "$LEN_EXPRESSAO" -gt "$LEN_CHAVE" ];then
 		REPETE=$(($LEN_EXPRESSAO/$LEN_CHAVE))
 		COMPLETA=$(($LEN_EXPRESSAO%$LEN_CHAVE))
@@ -48,16 +48,23 @@ function fn_get_cifra_adfgvx()
 	#echo "${LETRAS[@]}" # DEBUG
 
 	for i in $(seq 0 $(("$LEN_EXPRESSAO"-1))) ; do
+		INDEX_LIN=""
+		INDEX_COL=""
+		INDEX_TMP=""
+		INDEX_COL_TMP=""
+
 		#vamos pegar a letra dentro da expressao
 		LETRA_TMP=$(echo "${EXPRESSAO:$i:1}")
 		LETRA=$(echo "$LETRA_TMP" | tr "a-z" "A-Z")
 
 
 		INDEX_CHAVE_BASE=$(echo ${CHAVE_BASE[@]/${LETRA}//} | cut -d/ -f1 | wc -w | tr -d ' ')
-		echo "LETRA: $LETRA, INDEX_CHAVE_BASE: $INDEX_CHAVE_BASE, CHAVE_BASE: ${CHAVE_BASE[@]}"
+		#echo "LETRA: $LETRA, INDEX_CHAVE_BASE: $INDEX_CHAVE_BASE, CHAVE_BASE: ${CHAVE_BASE[@]}"   #DEBUG
+		echo "LETRA: $LETRA, INDEX_CHAVE_BASE: $INDEX_CHAVE_BASE"   #DEBUG
 		
 		# ajustando o indice para termos o tamanho começando de 1
-		INDEX_TMP=$(($INDEX_CHAVE_BASE+1))
+		#INDEX_TMP=$(($INDEX_CHAVE_BASE+1))
+		INDEX_TMP="$INDEX_CHAVE_BASE"
 		
 		# o valor inteiro da divisão por 6 (LETRAS ADFGVX) dá o indice da linha
 		INDEX_LIN="$(($INDEX_TMP/6))"
@@ -65,14 +72,20 @@ function fn_get_cifra_adfgvx()
 		# o valor resto da divisão por 6 (LETRAS ADFGVX) dá o indice da coluna (retirada as reptições das linhas)
 		# temos de retirar o 1 adicionado para achar o indice correto
 		INDEX_COL_TMP="$(($INDEX_TMP%6))"
-		INDEX_COL="$(($INDEX_COL_TMP-1))"
+		#INDEX_COL="$(($INDEX_COL_TMP-1))"
+		INDEX_COL="$INDEX_COL_TMP"
 		
 		# Obtendo o par de coordenadas LinhaxColuna
 		COORDENADAS="${BASE_CIFRA[${INDEX_LIN}]}${BASE_CIFRA[${INDEX_COL}]}"
-		echo "LETRA: $LETRA, INDEX_LIN: $INDEX_LIN, INDEX_COL: $INDEX_COL, COORDENADAS: $COORDENADAS "
+		echo "LETRA: $LETRA, INDEX_LIN: $INDEX_LIN, INDEX_COL: $INDEX_COL, COORDENADAS: $COORDENADAS "   #DEBUG
 
 		
-		SAIDA="$SAIDA$COORDENADAS"	
+		#SAIDA="$SAIDA$COORDENADAS"
+		SAIDA="$SAIDA $COORDENADAS"
+
+		## Etapa de embaralhamento das colunas
+		
+			
 
 		
 	done
@@ -81,7 +94,7 @@ function fn_get_cifra_adfgvx()
 
 function fn_descifrar_cifra_adfgvx()
 {
-	
+	echo nada
 }
 
 
