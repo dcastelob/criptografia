@@ -3,8 +3,6 @@
 # Autor: Diego Castelo Branco
 # Data: 05/05/2018
 
-#LETRAS=(a b c d e f g h i j k l m n o p q r s t u v w x y z " ")
-LETRAS=(a b c d e f g h i j k l m n o p q r s t u v w x y z)
 
 function asc_to_char() {
   [ "$1" -lt 256 ] || return 1
@@ -39,7 +37,7 @@ function fn_get_ascii()
 	if [ "$LEN_EXPRESSAO" -ne "$LEN_CHAVE" ];then
 		echo "[alerta] Chave e expressão nao possuiem o mesmo tamanho"
 	fi
-	#LEN_LETRAS="${#LETRAS[@]}"
+
 	SAIDA=""
 	DESCIFRAR=0
 	echo "EXPRESSAO: $EXPRESSAO, LEN_EXPRESSAO: $LEN_EXPRESSAO, CHAVE: $CHAVE"
@@ -75,6 +73,7 @@ if [ $# -lt 2 ];then
 	echo " Notas:"
 	echo "   1) Utilize textos sem espaços"
 	echo " Exemplo1: $0 \"textoplano\" \"chave\""
+	exit
 	
 fi
 
